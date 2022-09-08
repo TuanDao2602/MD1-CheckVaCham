@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body onload="docReady()">
+<img id="anhdung" src="305097285_1501932050235143_4755312738804012710_n.jpg"
+     style="width: 300px ;height: 300px;position:absolute ;top: 0;left:0" >
+<img id="anhdiep" src="88126167_881622212266133_7301124269222658048_n.jpg"
+     style="width: 300px;height: 300px;position: absolute;top:500px;left: 500px">
+<script>
+    function upArrowPressed(){
+        let up=document.getElementById("anhdung")
+        up.style.top =parseInt(up.style.top)-5 +"px";
+    }function downArrowPressed() {
+        let down=document.getElementById("anhdung")
+        down.style.top =parseInt(down.style.top)+5 +"px";
+    }function leftArrowPressed() {
+        let left=document.getElementById("anhdung")
+        left.style.left =parseInt(left.style.left)-5 +"px";
+    }function rightArrowPressed() {
+        let right = document.getElementById("anhdung");
+        right.style.left = parseInt(right.style.left) + 5 + 'px';
+    }
+    function moveSelection(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                leftArrowPressed();
+                checkVaCham()
+                break;
+            case 39:
+                rightArrowPressed();
+                checkVaCham()
+                break;
+            case 38:
+                upArrowPressed();
+                checkVaCham()
+
+                break;
+            case 40:
+                downArrowPressed();
+                checkVaCham()
+                break;
+        }
+    }
+    function docReady() {
+        window.addEventListener('keydown', moveSelection);
+    }
+    function checkVaCham(){
+        let anhdung1=document.getElementById("anhdung");//
+        let x1=parseInt(anhdung1.style.left) // lấy tạo độ left và tọa độ top của ảnh của dũng nếu ảnh của dũng di chuyển đồng thời top và left tới tọa độ mà Lớn
+        let y1=parseInt((anhdung1.style.top))//hơn khoảng cách ảnh của diệp đang neo là 500px trừ đi độ rộng và dài ảnh của dũng hiện tại là 300 thì sẽ xảy ra va chạm
+
+        if (500-x1<=300 && 500-y1 <=300){
+            alert("I Love You")
+            return;
+        }
+
+    }
+</script>
+
+</body>
+</html>
